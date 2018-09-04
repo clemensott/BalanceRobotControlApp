@@ -1,0 +1,76 @@
+﻿<UserControl
+    x:Class="BalanceRobotControlApp.JoyStick"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BalanceRobotControlApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sys="using:System"
+    mc:Ignorable="d"
+    x:Name="control"
+    d:DesignHeight="400"
+    d:DesignWidth="200"
+    >
+
+    <UserControl.Resources>
+        <!--<sys:Double x:Key="coorThickness">4</sys:Double>
+        <sys:Double x:Key="stickSize">30</sys:Double>-->
+        <local:HalfConverter x:Key="half"/>
+    </UserControl.Resources>
+
+    <Canvas Background="Transparent"
+            Loaded="control_Loaded"
+            SizeChanged="control_SizeChanged"
+            PointerEntered="control_PointerPressed"
+            PointerMoved="control_PointerMoved"
+            PointerReleased="control_PointerReleased">
+        <!--<Line X1="0" 
+              Y1="0" 
+              X2="{Binding ElementName=control,Path=ActualWidth}"
+              Y2="0"
+              Stroke="{ThemeResource ApplicationForegroundThemeBrush}" 
+              StrokeThickness="{StaticResource borderThickness}"/>
+        
+        <Line X1="0" 
+              Y1="0" 
+              X2="0"
+              Y2="{Binding ElementName=control,Path=ActualHeight}"
+              Stroke="{ThemeResource ApplicationForegroundThemeBrush}" 
+              StrokeThickness="{StaticResource borderThickness}"/>
+
+        <Line X1="0" 
+              Y1="{Binding ElementName=control,Path=ActualHeight}" 
+              X2="{Binding ElementName=control,Path=ActualWidth}" 
+              Y2="{Binding ElementName=control,Path=ActualHeight}"
+              Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
+              StrokeThickness="{StaticResource borderThickness}"/>
+
+        <Line X1="{Binding ElementName=control,Path=ActualWidth}"
+              Y1="0" 
+              X2="{Binding ElementName=control,Path=ActualWidth}" 
+              Y2="{Binding ElementName=control,Path=ActualHeight}"
+              Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
+              StrokeThickness="{StaticResource borderThickness}"/>-->
+
+
+        <Line X1="0"
+              Y1="{Binding ElementName=control,Path=ActualHeight,Converter={StaticResource half}}" 
+              X2="{Binding ElementName=control,Path=ActualWidth}" 
+              Y2="{Binding ElementName=control,Path=ActualHeight,Converter={StaticResource half}}" 
+              Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
+              StrokeThickness="4"/>
+
+        <Line X1="{Binding ElementName=control,Path=ActualWidth,Converter={StaticResource half}}" 
+              Y1="0" 
+              X2="{Binding ElementName=control,Path=ActualWidth,Converter={StaticResource half}}" 
+              Y2="{Binding ElementName=control,Path=ActualHeight}" 
+              Stroke="{ThemeResource ApplicationForegroundThemeBrush}"
+              StrokeThickness="4"/>
+
+        <Ellipse x:Name="elpStick"
+                 Width="50" 
+                 Height="{Binding ElementName=elpStick,Path=Width}"
+                 Fill="{ThemeResource PhoneAccentBrush}"
+                 SizeChanged="control_SizeChanged"/>
+    </Canvas>
+</UserControl>
